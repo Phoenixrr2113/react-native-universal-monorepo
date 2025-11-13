@@ -1,13 +1,16 @@
 import React from "react";
+import { ImageSourcePropType, Platform } from "react-native";
 import {
-  Image,
-  ImageSourcePropType,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
+  Box,
   Text,
-  View,
-} from "react-native";
+  Heading,
+  Badge,
+  BadgeText,
+  Image,
+  Center,
+  GluestackUIProvider,
+} from "@gluestack-ui/themed";
+import { config } from "../gluestack-ui.config";
 import { AsyncStorageExample } from "./AsyncStorageExample";
 import { subplatform } from "./config";
 import LogoSrc from "./logo.png";
@@ -16,54 +19,98 @@ export function App(): JSX.Element {
   const platformValue = subplatform
     ? `${Platform.OS} (${subplatform})`
     : Platform.OS;
+
   return (
-    <SafeAreaView style={styles.root}>
-      {/* On React Native for Web builds coming from CRA, TypeScript 
-          complains about the image type, so we cast it as a workaround  */}
-      <Image style={styles.logo} source={LogoSrc as ImageSourcePropType} />
-      <Text style={styles.text}>Hello from React Native!</Text>
-      <View style={styles.platformRow}>
-        <Text style={styles.text}>Platform: </Text>
-        <View style={styles.platformBackground}>
-          <Text style={styles.platformValue}>{platformValue}</Text>
-        </View>
-      </View>
-      <AsyncStorageExample/>
-    </SafeAreaView>
+    <GluestackUIProvider config={config}>
+      <Box
+        sx={{
+          flex: 1,
+          backgroundColor: '$white',
+        }}
+      >
+        <Center
+          sx={{
+            flex: 1,
+            paddingHorizontal: 16,
+          }}
+        >
+          <Box
+            sx={{
+              alignItems: 'center',
+              maxWidth: 500,
+              width: '100%',
+            }}
+          >
+            {/* Logo */}
+            <Image
+              source={LogoSrc as ImageSourcePropType}
+              alt="React Native Logo"
+              sx={{
+                width: 128,
+                height: 128,
+                borderRadius: 16,
+              }}
+            />
+
+            {/* Heading */}
+            <Heading
+              sx={{
+                fontSize: 24,
+                textAlign: 'center',
+                marginTop: 24,
+              }}
+            >
+              Hello from React Native!
+            </Heading>
+
+            {/* Platform Badge */}
+            <Box
+              sx={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 16,
+              }}
+            >
+              <Text
+                sx={{
+                  fontSize: 20,
+                  fontWeight: '600',
+                  marginRight: 8,
+                }}
+              >
+                Platform:
+              </Text>
+              <Badge
+                sx={{
+                  backgroundColor: '$primary500',
+                  borderRadius: 8,
+                  paddingHorizontal: 16,
+                  paddingVertical: 8,
+                }}
+              >
+                <BadgeText
+                  sx={{
+                    color: '$white',
+                    fontWeight: '500',
+                  }}
+                >
+                  {platformValue}
+                </BadgeText>
+              </Badge>
+            </Box>
+
+            {/* AsyncStorage Example */}
+            <Box
+              sx={{
+                width: '100%',
+                marginTop: 16,
+              }}
+            >
+              <AsyncStorageExample />
+            </Box>
+          </Box>
+        </Center>
+      </Box>
+    </GluestackUIProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  root: {
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-  },
-  logo: {
-    width: 120,
-    height: 120,
-    marginBottom: 20,
-  },
-  text: {
-    fontSize: 28,
-    fontWeight: "600",
-  },
-  platformRow: {
-    marginTop: 12,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  platformValue: {
-    fontSize: 28,
-    fontWeight: "500",
-  },
-  platformBackground: {
-    backgroundColor: "#ececec",
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: "#d4d4d4",
-    paddingHorizontal: 6,
-    borderRadius: 6,
-    alignItems: "center",
-  }
-});

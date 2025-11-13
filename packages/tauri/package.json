@@ -1,0 +1,32 @@
+{
+  "name": "@my-app/tauri",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Desktop application built with Tauri 2.0",
+  "author": "John Doe",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tsc && vite build && tauri build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix",
+    "test": "echo 'No tests yet' && exit 0"
+  },
+  "dependencies": {
+    "@my-app/app": "*",
+    "@tauri-apps/api": "^2.2.0",
+    "@tauri-apps/plugin-shell": "^2.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.7"
+  }
+}
