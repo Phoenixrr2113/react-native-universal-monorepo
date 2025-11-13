@@ -1,0 +1,53 @@
+name: Validate
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**'
+      - '.github/dependabot.yml'
+
+jobs:
+  validate-workflows:
+    name: Validate GitHub Actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate workflow files
+        run: |
+          echo "Checking for syntax errors in workflow files..."
+          for file in .github/workflows/*.yml; do
+            echo "Validating $file"
+            if ! python3 -c "import yaml; yaml.safe_load(open('$file'))" 2>/dev/null; then
+              echo "❌ Invalid YAML in $file"
+              exit 1
+            fi
+          done
+          echo "✅ All workflow files are valid YAML"
+
+      - name: Check for required fields
+        run: |
+          echo "Checking for required workflow fields..."
+          for file in .github/workflows/*.yml; do
+            if ! grep -q "^name:" "$file"; then
+              echo "❌ Missing 'name' field in $file"
+              exit 1
+            fi
+            if ! grep -q "^on:" "$file"; then
+              echo "❌ Missing 'on' field in $file"
+              exit 1
+            fi
+          done
+          echo "✅ All required fields present"
+
+      - name: Validate Dependabot config
+        run: |
+          echo "Validating Dependabot configuration..."
+          if [ -f .github/dependabot.yml ]; then
+            if ! python3 -c "import yaml; yaml.safe_load(open('.github/dependabot.yml'))" 2>/dev/null; then
+              echo "❌ Invalid YAML in dependabot.yml"
+              exit 1
+            fi
+            echo "✅ Dependabot config is valid"
+          fi
