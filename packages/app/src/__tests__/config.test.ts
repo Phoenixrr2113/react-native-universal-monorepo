@@ -1,7 +1,14 @@
-import { Platform } from 'react-native';
-
 // We need to test the module in different scenarios
 // Note: This is a bit tricky because the module runs on import
+
+// Global type declaration for subplatform
+declare global {
+  // eslint-disable-next-line no-var
+  var __SUBPLATFORM__: 'electron' | 'browser-ext' | 'android-tv' | 'tvos' | 'next' | undefined;
+}
+
+// Export to make this a module
+export {};
 
 describe('config module', () => {
   beforeEach(() => {

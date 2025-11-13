@@ -92,8 +92,7 @@ describe('AsyncStorageExample Component', () => {
   });
 
   it('displays updated value after button press', async () => {
-    const newValue = 'abc12';
-    mockSetItem.mockImplementation((value) => {
+    mockSetItem.mockImplementation(() => {
       // Simulate storage update
       return Promise.resolve();
     });

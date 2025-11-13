@@ -42,9 +42,7 @@ describe('App Component', () => {
   });
 
   it('applies correct styles', () => {
-    const { getByTestId } = render(<App />);
-    // We'll need to add testID to SafeAreaView in the component
-    // For now, just check that it renders without errors
+    // Check that it renders without errors
     expect(() => render(<App />)).not.toThrow();
   });
 
