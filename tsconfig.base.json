@@ -1,18 +1,46 @@
 {
   "compilerOptions": {
+    // Language and Environment - TypeScript 5.x modern settings
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": true,
+
+    // Modules - Node resolution for React Native compatibility
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    // Emit
+    "noEmit": true,
+    "sourceMap": true,
+
+    // Interop Constraints
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react",
-    "lib": ["es2017"],
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
+
+    // Type Checking - Strict but practical
     "strict": true,
-    // Solves https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16825
-    "skipLibCheck": true,
-    "target": "esnext"
-  }
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Completeness
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    ".next",
+    "out",
+    "coverage",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }
