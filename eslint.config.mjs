@@ -80,7 +80,7 @@ export default [
 
   // Web/Browser packages (need browser globals)
   {
-    files: ['packages/web/**/*', 'packages/browser-ext/**/*', 'packages/next/**/*', 'packages/electron/**/*'],
+    files: ['packages/web/**/*', 'packages/browser-ext/**/*', 'packages/next/**/*', 'packages/tauri/**/*'],
     languageOptions: {
       globals: {
         ...globals.browser,
