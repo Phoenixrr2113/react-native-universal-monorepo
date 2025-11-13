@@ -116,6 +116,37 @@ Other commands (we use [ultra-runner](https://github.com/folke/ultra-runner) to 
 - `yarn test`: Run tests of each project
 - `yarn typecheck`: Run the TypeScript type-checking on each project
 
+## CI/CD
+
+This monorepo includes a comprehensive CI/CD pipeline powered by GitHub Actions:
+
+### Automated Workflows
+
+- **✅ Continuous Integration**: Runs on every PR and push to main
+  - Linting (ESLint v9)
+  - Type checking (TypeScript 5.9)
+  - Testing (Jest)
+  - Building all packages
+
+- **🖥️ Tauri Desktop Builds**: Automated cross-platform desktop app builds
+  - Linux (x86_64)
+  - macOS (Intel + Apple Silicon)
+  - Windows (x86_64)
+  - Triggered on git tags or manual dispatch
+
+- **🤖 Dependabot**: Automated dependency updates
+  - Weekly updates for npm, GitHub Actions, and Cargo
+  - Auto-merge for patch and minor updates
+  - Manual review required for major updates
+
+### Performance
+
+- ⚡ **Fast**: Turborepo caching + parallel jobs
+- 💾 **Efficient**: Yarn and Rust dependency caching
+- 🔄 **Reliable**: Matrix builds for cross-platform compatibility
+
+See [`.github/WORKFLOWS.md`](.github/WORKFLOWS.md) for detailed documentation.
+
 
 ## Native dependencies
 
