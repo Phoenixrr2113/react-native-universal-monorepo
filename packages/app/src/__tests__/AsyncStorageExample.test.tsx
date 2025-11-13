@@ -28,7 +28,7 @@ describe('AsyncStorageExample Component', () => {
   it('displays instruction text', () => {
     render(<AsyncStorageExample />);
     expect(
-      screen.getByText(/Use the button below and refresh the app to test/i)
+      screen.getByText(/Test the async-storage native module/i)
     ).toBeTruthy();
   });
 
@@ -37,9 +37,9 @@ describe('AsyncStorageExample Component', () => {
     expect(screen.getByText('Current value:')).toBeTruthy();
   });
 
-  it('renders "Update value" button', () => {
+  it('renders "Update Value" button', () => {
     render(<AsyncStorageExample />);
-    expect(screen.getByText('Update value')).toBeTruthy();
+    expect(screen.getByText('Update Value')).toBeTruthy();
   });
 
   it('loads stored value on mount', async () => {
@@ -69,7 +69,7 @@ describe('AsyncStorageExample Component', () => {
   it('updates value when button is pressed', async () => {
     render(<AsyncStorageExample />);
 
-    const button = screen.getByText('Update value');
+    const button = screen.getByText('Update Value');
     fireEvent.press(button);
 
     await waitFor(() => {
@@ -80,7 +80,7 @@ describe('AsyncStorageExample Component', () => {
   it('generates random value on update', async () => {
     render(<AsyncStorageExample />);
 
-    const button = screen.getByText('Update value');
+    const button = screen.getByText('Update Value');
     fireEvent.press(button);
 
     await waitFor(() => {
@@ -99,7 +99,7 @@ describe('AsyncStorageExample Component', () => {
 
     render(<AsyncStorageExample />);
 
-    const button = screen.getByText('Update value');
+    const button = screen.getByText('Update Value');
     fireEvent.press(button);
 
     await waitFor(() => {
@@ -125,7 +125,7 @@ describe('AsyncStorageExample Component', () => {
 
     render(<AsyncStorageExample />);
 
-    const button = screen.getByText('Update value');
+    const button = screen.getByText('Update Value');
 
     // Should not throw error
     expect(() => fireEvent.press(button)).not.toThrow();
