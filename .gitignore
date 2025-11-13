@@ -4,6 +4,7 @@
 .history
 .jest
 .next
+.turbo
 .vscode
 node_modules
 npm-debug.log*
