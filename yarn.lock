@@ -4068,12 +4068,17 @@ __metadata:
     "@testing-library/user-event": "npm:^12.1.10"
     "@types/react": "npm:^17.0.20"
     "@types/react-dom": "npm:^17.0.9"
+    autoprefixer: "npm:^10.4.22"
+    babel-plugin-react-native-web: "npm:^0.21.2"
+    nativewind: "npm:^4.2.1"
+    postcss: "npm:^8.5.6"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-native: "npm:^0.78.0"
     react-native-monorepo-tools: "npm:^1.1.0"
     react-native-web: "npm:^0.19.0"
     react-scripts: "npm:4.0.3"
+    tailwindcss: "npm:^3.4.0"
     web-vitals: "npm:^1.0.1"
   languageName: unknown
   linkType: soft
@@ -9178,6 +9183,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoprefixer@npm:^10.4.22":
+  version: 10.4.22
+  resolution: "autoprefixer@npm:10.4.22"
+  dependencies:
+    browserslist: "npm:^4.27.0"
+    caniuse-lite: "npm:^1.0.30001754"
+    fraction.js: "npm:^5.3.4"
+    normalize-range: "npm:^0.1.2"
+    picocolors: "npm:^1.1.1"
+    postcss-value-parser: "npm:^4.2.0"
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: 10/752ce73887364a47fb7b2fedb66cb5a4905f5a2f522fd07c0f63a9a401dbb7fc8a368424b5728073be5c2806356cbe90eb75d5ccdec596f90d6987fac78adcb5
+  languageName: node
+  linkType: hard
+
 "autoprefixer@npm:^9.6.1":
   version: 9.8.8
   resolution: "autoprefixer@npm:9.8.8"
@@ -9439,6 +9462,13 @@ __metadata:
   version: 0.17.7
   resolution: "babel-plugin-react-native-web@npm:0.17.7"
   checksum: 10/ce3db60139b459c4265ee221fd24c765c1deae8886a1ce0ccb860c85d5d3641ef0a8d13300a8d55e5c94f01ade7025e8bfbef4bcd4af90ffd87e058a7e9ffcdb
+  languageName: node
+  linkType: hard
+
+"babel-plugin-react-native-web@npm:^0.21.2":
+  version: 0.21.2
+  resolution: "babel-plugin-react-native-web@npm:0.21.2"
+  checksum: 10/511fe25e4fc76ac68e6edd3177676251c65e96b3e516805c21d4106bf998439dba5a96f80981a3dda39d2c09b95dc9dd62852fc465b433b2831657f8fd376eaf
   languageName: node
   linkType: hard
 
@@ -9986,7 +10016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.24.0, browserslist@npm:^4.26.3, browserslist@npm:^4.6.2, browserslist@npm:^4.6.4":
+"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.24.0, browserslist@npm:^4.26.3, browserslist@npm:^4.27.0, browserslist@npm:^4.6.2, browserslist@npm:^4.6.4":
   version: 4.28.0
   resolution: "browserslist@npm:4.28.0"
   dependencies:
@@ -14020,6 +14050,13 @@ __metadata:
   version: 0.2.0
   resolution: "forwarded@npm:0.2.0"
   checksum: 10/29ba9fd347117144e97cbb8852baae5e8b2acb7d1b591ef85695ed96f5b933b1804a7fac4a15dd09ca7ac7d0cdc104410e8102aae2dd3faa570a797ba07adb81
+  languageName: node
+  linkType: hard
+
+"fraction.js@npm:^5.3.4":
+  version: 5.3.4
+  resolution: "fraction.js@npm:5.3.4"
+  checksum: 10/ef2c4bc81b2484065f8f7e4c2498f3fdfe6d233b8e7c7f75e3683ed10698536129b2c2dbd6c3f788ca4a020ec07116dd909a91036a364c98dc802b5003bfc613
   languageName: node
   linkType: hard
 
@@ -21747,7 +21784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.0, postcss@npm:^8.4.47, postcss@npm:^8.5.3":
+"postcss@npm:^8.1.0, postcss@npm:^8.4.47, postcss@npm:^8.5.3, postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:

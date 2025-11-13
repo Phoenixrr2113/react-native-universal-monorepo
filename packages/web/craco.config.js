@@ -19,4 +19,15 @@ module.exports = {
       })
     ],
   },
+  babel: {
+    presets: [['nativewind/babel']],
+  },
+  style: {
+    postcss: {
+      plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
+    },
+  },
 };
