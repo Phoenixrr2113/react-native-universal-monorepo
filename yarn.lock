@@ -2135,7 +2135,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.39.1":
+"@eslint/js@npm:9.39.1, @eslint/js@npm:^9.39.1":
   version: 9.39.1
   resolution: "@eslint/js@npm:9.39.1"
   checksum: 10/b10b9b953212c0f3ffca475159bbe519e9e98847200c7432d1637d444fddcd7b712d2b7710a7dc20510f9cfbe8db330039b2aad09cb55d9545b116d940dbeed2
@@ -13613,7 +13613,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:7.x, eslint-plugin-react@npm:^7.21.5":
+"eslint-plugin-react@npm:7.x, eslint-plugin-react@npm:^7.21.5, eslint-plugin-react@npm:^7.37.5":
   version: 7.37.5
   resolution: "eslint-plugin-react@npm:7.37.5"
   dependencies:
@@ -15170,6 +15170,13 @@ __metadata:
   version: 14.0.0
   resolution: "globals@npm:14.0.0"
   checksum: 10/03939c8af95c6df5014b137cac83aa909090c3a3985caef06ee9a5a669790877af8698ab38007e4c0186873adc14c0b13764acc754b16a754c216cc56aa5f021
+  languageName: node
+  linkType: hard
+
+"globals@npm:^16.5.0":
+  version: 16.5.0
+  resolution: "globals@npm:16.5.0"
+  checksum: 10/f9e8a2a13f50222c127030a619e283e7bbfe32966316bdde0715af1d15a7e40cb9c24ff52cad59671f97762ed8b515353c2f8674f560c63d9385f19ee26735a6
   languageName: node
   linkType: hard
 
@@ -23460,12 +23467,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-native-universal-project@workspace:."
   dependencies:
+    "@eslint/js": "npm:^9.39.1"
     "@typescript-eslint/eslint-plugin": "npm:^8"
     "@typescript-eslint/parser": "npm:^8"
     eslint: "npm:^9"
     eslint-config-prettier: "npm:^9"
+    eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-app: "npm:^6.2.2"
     eslint-plugin-react-native: "npm:^3.11.0"
+    globals: "npm:^16.5.0"
     prettier: "npm:^2.3.2"
     turbo: "npm:^2.6.1"
     typescript: "npm:^5.9.3"
