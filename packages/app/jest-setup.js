@@ -63,3 +63,34 @@ jest.mock('@gluestack-ui/themed', () => {
     Card: mockGluestackComponent('Card'),
   };
 });
+
+// Mock React Navigation dependencies
+jest.mock('react-native-safe-area-context', () => ({
+  SafeAreaProvider: ({ children }) => children,
+  SafeAreaView: mockComponent('SafeAreaView'),
+  useSafeAreaInsets: () => ({ top: 0, right: 0, bottom: 0, left: 0 }),
+}));
+
+jest.mock('react-native-screens', () => ({
+  enableScreens: jest.fn(),
+}));
+
+// Mock React Navigation
+jest.mock('@react-navigation/native', () => ({
+  NavigationContainer: ({ children }) => children,
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    goBack: jest.fn(),
+    setOptions: jest.fn(),
+  }),
+  useRoute: () => ({
+    params: {},
+  }),
+}));
+
+jest.mock('@react-navigation/native-stack', () => ({
+  createNativeStackNavigator: () => ({
+    Navigator: mockComponent('StackNavigator'),
+    Screen: mockComponent('StackScreen'),
+  }),
+}));
