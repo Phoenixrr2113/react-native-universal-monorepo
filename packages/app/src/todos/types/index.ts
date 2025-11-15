@@ -14,6 +14,6 @@ export interface TodoStore {
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, updates: Partial<Omit<Todo, 'id' | 'createdAt'>>) => void;
   getTodoById: (id: string) => Todo | undefined;
-  loadTodos: () => Promise<void>;
-  saveTodos: () => Promise<void>;
+  loadTodos: () => void;
+  saveTodos: () => void;
 }
