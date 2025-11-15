@@ -3,7 +3,7 @@
     // Language and Environment - TypeScript 5.x modern settings
     "target": "ES2022",
     "lib": ["ES2022"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "experimentalDecorators": true,
     "useDefineForClassFields": true,
 

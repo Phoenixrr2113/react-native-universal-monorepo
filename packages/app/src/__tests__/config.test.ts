@@ -3,7 +3,7 @@
 
 // Global type declaration for subplatform
 declare global {
-  // eslint-disable-next-line no-var
+   
   var __SUBPLATFORM__: 'tauri' | 'browser-ext' | 'android-tv' | 'tvos' | 'next' | undefined;
 }
 

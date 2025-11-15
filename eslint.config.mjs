@@ -75,6 +75,8 @@ export default [
       'react/prop-types': 'off',
       // Allow JSX in .tsx files
       'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+      // React 19+ doesn't require React import for JSX
+      'react/react-in-jsx-scope': 'off',
     },
   },
 
