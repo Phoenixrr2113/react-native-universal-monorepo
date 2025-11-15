@@ -3,8 +3,8 @@
 
 // Global type declaration for subplatform
 declare global {
-  // eslint-disable-next-line no-var
-  var __SUBPLATFORM__: 'electron' | 'browser-ext' | 'android-tv' | 'tvos' | 'next' | undefined;
+   
+  var __SUBPLATFORM__: 'tauri' | 'browser-ext' | 'android-tv' | 'tvos' | 'next' | undefined;
 }
 
 // Export to make this a module
@@ -38,10 +38,10 @@ describe('config module', () => {
       expect(subplatform).toBeUndefined();
     });
 
-    it('detects electron subplatform from __SUBPLATFORM__', () => {
-      (global as any).__SUBPLATFORM__ = 'electron';
+    it('detects tauri subplatform from __SUBPLATFORM__', () => {
+      (global as any).__SUBPLATFORM__ = 'tauri';
       const { subplatform } = require('../config');
-      expect(subplatform).toBe('electron');
+      expect(subplatform).toBe('tauri');
     });
 
     it('detects browser-ext subplatform from __SUBPLATFORM__', () => {
@@ -100,7 +100,7 @@ describe('config module', () => {
     it('__SUBPLATFORM__ accepts valid platform strings', () => {
       // This test verifies TypeScript types are correct
       const validPlatforms: Array<typeof __SUBPLATFORM__> = [
-        'electron',
+        'tauri',
         'browser-ext',
         'android-tv',
         'tvos',

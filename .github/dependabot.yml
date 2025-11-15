@@ -1,0 +1,56 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+  # Maintain dependencies for npm (yarn workspaces)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "javascript"
+    # Group minor and patch updates together
+    groups:
+      development-dependencies:
+        patterns:
+          - "@types/*"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "@babel/*"
+          - "jest*"
+          - "@testing-library/*"
+        update-types:
+          - "minor"
+          - "patch"
+      production-dependencies:
+        patterns:
+          - "react*"
+          - "@gluestack*"
+          - "nativewind"
+        update-types:
+          - "minor"
+          - "patch"
+    # Ignore major React Native updates (require manual testing)
+    ignore:
+      - dependency-name: "react-native"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+
+  # Maintain Rust dependencies for Tauri
+  - package-ecosystem: "cargo"
+    directory: "/packages/tauri/src-tauri"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "rust"
+      - "tauri"

@@ -34,16 +34,16 @@ For more details, check out ["Running React Native everywhere: Yarn Workspaces m
 
 ## Supported platforms
 
-- Android (React Native 0.65)
-- iOS (React Native 0.65)
-- Windows (React Native 0.65)
-- MacOS (React Native 0.63)
-- Android TV (React Native 0.65)
-- tvOS (React Native 0.65)
-- Web (React Native 0.65)
-- Web - Browser Extension (React Native 0.65)
-- Web - Electron (React Native 0.65)
-- Web - Next.js (React Native 0.65)
+- Android (React Native 0.78)
+- iOS (React Native 0.78)
+- Windows (React Native 0.78)
+- MacOS (React Native 0.78)
+- Android TV (React Native 0.78)
+- tvOS (React Native 0.78)
+- Web (React Native 0.78)
+- Web - Browser Extension (React Native 0.78)
+- Desktop - Tauri 2.0 (Modern desktop framework replacing Electron)
+- Web - Next.js (React 19)
 
 ## Getting started
 
@@ -92,10 +92,8 @@ Development and build commands:
 - `yarn macos:xcode`: Open the macOS app on XCode
 - `yarn web:start`: Start developing the web app
 - `yarn web:build`: Create a production build of the web app
-- `yarn electron:start`: Start developing the Electron app
-- `yarn electron:package:mac`: Package the production binary of the Electron app for macOS
-- `yarn electron:package:win`: Package the production binary of the Electron app for windows
-- `yarn electron:package:linux`: Package the production binary of the Electron app for linux
+- `yarn tauri:dev`: Start developing the Tauri desktop app
+- `yarn tauri:build`: Build the Tauri desktop app for production
 - `yarn browser-ext:start`: Start developing the browser extension
 - `yarn browser-ext:build`: Create a production build of the browser extension
 - `yarn windows:metro`: Start the metro server for Windows
@@ -117,6 +115,37 @@ Other commands (we use [ultra-runner](https://github.com/folke/ultra-runner) to 
 - `yarn lint:fix`: Lint + fix each project
 - `yarn test`: Run tests of each project
 - `yarn typecheck`: Run the TypeScript type-checking on each project
+
+## CI/CD
+
+This monorepo includes a comprehensive CI/CD pipeline powered by GitHub Actions:
+
+### Automated Workflows
+
+- **✅ Continuous Integration**: Runs on every PR and push to main
+  - Linting (ESLint v9)
+  - Type checking (TypeScript 5.9)
+  - Testing (Jest)
+  - Building all packages
+
+- **🖥️ Tauri Desktop Builds**: Automated cross-platform desktop app builds
+  - Linux (x86_64)
+  - macOS (Intel + Apple Silicon)
+  - Windows (x86_64)
+  - Triggered on git tags or manual dispatch
+
+- **🤖 Dependabot**: Automated dependency updates
+  - Weekly updates for npm, GitHub Actions, and Cargo
+  - Auto-merge for patch and minor updates
+  - Manual review required for major updates
+
+### Performance
+
+- ⚡ **Fast**: Turborepo caching + parallel jobs
+- 💾 **Efficient**: Yarn and Rust dependency caching
+- 🔄 **Reliable**: Matrix builds for cross-platform compatibility
+
+See [`.github/WORKFLOWS.md`](.github/WORKFLOWS.md) for detailed documentation.
 
 
 ## Native dependencies
