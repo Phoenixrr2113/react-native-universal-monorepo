@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, FlatList, Pressable } from 'react-native';
+import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTodoStore } from '../stores/useTodoStore';
@@ -20,24 +20,24 @@ export const HomeScreen: React.FC = () => {
   const completedTodos = todos.filter(t => t.completed);
 
   return (
-    <View className="flex-1 bg-gray-50 dark:bg-gray-900">
+    <View style={styles.container}>
       {/* Header */}
-      <View className="bg-blue-600 pt-12 pb-6 px-6">
-        <Text className="text-3xl font-bold text-white mb-2">My Todos</Text>
-        <Text className="text-blue-100">
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>My Todos</Text>
+        <Text style={styles.headerSubtitle}>
           {activeTodos.length} active • {completedTodos.length} completed
         </Text>
       </View>
 
       {/* Todo List */}
-      <View className="flex-1 px-4 pt-4">
+      <View style={styles.listContainer}>
         {todos.length === 0 ? (
-          <View className="flex-1 items-center justify-center">
-            <Text className="text-6xl mb-4">📝</Text>
-            <Text className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyIcon}>📝</Text>
+            <Text style={styles.emptyTitle}>
               No todos yet
             </Text>
-            <Text className="text-gray-500 dark:text-gray-400 text-center">
+            <Text style={styles.emptySubtitle}>
               Tap the + button to create your first todo
             </Text>
           </View>
@@ -62,17 +62,77 @@ export const HomeScreen: React.FC = () => {
       {/* Add Button */}
       <Pressable
         onPress={() => navigation.navigate('AddTodo')}
-        className="absolute bottom-6 right-6 w-16 h-16 bg-blue-600 rounded-full items-center justify-center shadow-lg"
-        style={{
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 4 },
-          shadowOpacity: 0.3,
-          shadowRadius: 6,
-          elevation: 8,
-        }}
+        style={styles.addButton}
       >
-        <Text className="text-white text-3xl font-light">+</Text>
+        <Text style={styles.addButtonText}>+</Text>
       </Pressable>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f9fafb',
+  },
+  header: {
+    backgroundColor: '#2563eb',
+    paddingTop: 48,
+    paddingBottom: 24,
+    paddingHorizontal: 24,
+  },
+  headerTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 8,
+  },
+  headerSubtitle: {
+    color: '#bfdbfe',
+  },
+  listContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  emptyState: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyIcon: {
+    fontSize: 60,
+    marginBottom: 16,
+  },
+  emptyTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 8,
+  },
+  emptySubtitle: {
+    color: '#6b7280',
+    textAlign: 'center',
+  },
+  addButton: {
+    position: 'absolute',
+    bottom: 24,
+    right: 24,
+    width: 64,
+    height: 64,
+    backgroundColor: '#2563eb',
+    borderRadius: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 8,
+  },
+  addButtonText: {
+    color: '#ffffff',
+    fontSize: 30,
+    fontWeight: '300',
+  },
+});

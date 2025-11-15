@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StyleSheet,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -32,31 +33,31 @@ export const AddTodoScreen: React.FC = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      className="flex-1 bg-gray-50 dark:bg-gray-900"
+      style={styles.container}
     >
-      <ScrollView className="flex-1">
+      <ScrollView style={styles.scrollView}>
         {/* Header */}
-        <View className="bg-blue-600 pt-12 pb-6 px-6">
-          <View className="flex-row items-center justify-between">
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
             <View>
-              <Text className="text-3xl font-bold text-white mb-1">New Todo</Text>
-              <Text className="text-blue-100">Create a new task</Text>
+              <Text style={styles.headerTitle}>New Todo</Text>
+              <Text style={styles.headerSubtitle}>Create a new task</Text>
             </View>
             <Pressable
               onPress={() => navigation.goBack()}
-              className="p-2"
+              style={styles.closeButton}
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             >
-              <Text className="text-white text-2xl">✕</Text>
+              <Text style={styles.closeButtonText}>✕</Text>
             </Pressable>
           </View>
         </View>
 
         {/* Form */}
-        <View className="p-6">
+        <View style={styles.form}>
           {/* Title Input */}
-          <View className="mb-6">
-            <Text className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>
               Title *
             </Text>
             <TextInput
@@ -64,14 +65,14 @@ export const AddTodoScreen: React.FC = () => {
               onChangeText={setTitle}
               placeholder="What needs to be done?"
               placeholderTextColor="#9CA3AF"
-              className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white text-base"
+              style={styles.input}
               autoFocus
             />
           </View>
 
           {/* Description Input */}
-          <View className="mb-6">
-            <Text className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <View style={styles.inputGroup}>
+            <Text style={styles.label}>
               Description (optional)
             </Text>
             <TextInput
@@ -82,18 +83,17 @@ export const AddTodoScreen: React.FC = () => {
               multiline
               numberOfLines={4}
               textAlignVertical="top"
-              className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-3 text-gray-900 dark:text-white text-base"
-              style={{ minHeight: 100 }}
+              style={[styles.input, styles.textArea]}
             />
           </View>
 
           {/* Actions */}
-          <View className="flex-row gap-3">
+          <View style={styles.actions}>
             <Pressable
               onPress={() => navigation.goBack()}
-              className="flex-1 bg-gray-200 dark:bg-gray-700 py-4 rounded-lg items-center"
+              style={styles.cancelButton}
             >
-              <Text className="text-gray-700 dark:text-gray-300 font-semibold text-base">
+              <Text style={styles.cancelButtonText}>
                 Cancel
               </Text>
             </Pressable>
@@ -101,15 +101,15 @@ export const AddTodoScreen: React.FC = () => {
             <Pressable
               onPress={handleSave}
               disabled={!title.trim()}
-              className={`flex-1 py-4 rounded-lg items-center ${
-                title.trim()
-                  ? 'bg-blue-600'
-                  : 'bg-gray-300 dark:bg-gray-700'
-              }`}
+              style={[
+                styles.saveButton,
+                !title.trim() && styles.saveButtonDisabled,
+              ]}
             >
-              <Text className={`font-semibold text-base ${
-                title.trim() ? 'text-white' : 'text-gray-500'
-              }`}>
+              <Text style={[
+                styles.saveButtonText,
+                !title.trim() && styles.saveButtonTextDisabled,
+              ]}>
                 Save Todo
               </Text>
             </Pressable>
@@ -119,3 +119,99 @@ export const AddTodoScreen: React.FC = () => {
     </KeyboardAvoidingView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f9fafb',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  header: {
+    backgroundColor: '#2563eb',
+    paddingTop: 48,
+    paddingBottom: 24,
+    paddingHorizontal: 24,
+  },
+  headerContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 4,
+  },
+  headerSubtitle: {
+    color: '#bfdbfe',
+  },
+  closeButton: {
+    padding: 8,
+  },
+  closeButtonText: {
+    color: '#ffffff',
+    fontSize: 24,
+  },
+  form: {
+    padding: 24,
+  },
+  inputGroup: {
+    marginBottom: 24,
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 8,
+  },
+  input: {
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    color: '#111827',
+    fontSize: 16,
+  },
+  textArea: {
+    minHeight: 100,
+  },
+  actions: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  cancelButton: {
+    flex: 1,
+    backgroundColor: '#e5e7eb',
+    paddingVertical: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    color: '#374151',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  saveButton: {
+    flex: 1,
+    backgroundColor: '#2563eb',
+    paddingVertical: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  saveButtonDisabled: {
+    backgroundColor: '#d1d5db',
+  },
+  saveButtonText: {
+    color: '#ffffff',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  saveButtonTextDisabled: {
+    color: '#6b7280',
+  },
+});
