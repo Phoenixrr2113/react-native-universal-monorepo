@@ -16,7 +16,9 @@
     "@my-app/app": "*",
     "@react-native-async-storage/async-storage": "^2.0.0",
     "react": "^19.0.0",
-    "react-native": "npm:react-native-tvos@0.78.0-0"
+    "react-native": "npm:react-native-tvos@0.78.0-0",
+    "react-native-mmkv": "^4.0.0",
+    "react-native-nitro-modules": "^0.31.6"
   },
   "devDependencies": {
     "@babel/core": "^7",
@@ -44,6 +46,9 @@
       "jsx",
       "json",
       "node"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?|@gluestack-ui|@legendapp|@react-navigation|react-native-mmkv)/)"
     ]
   }
 }
