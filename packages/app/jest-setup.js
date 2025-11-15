@@ -1,6 +1,6 @@
 // Mock React Native completely to avoid Flow syntax issues
 const mockComponent = (name) => {
-  const Component = ({ children, ...props }) => {
+  const Component = ({ children }) => {
     return children || null;
   };
   Component.displayName = name;
@@ -42,7 +42,7 @@ jest.mock('./gluestack-ui.config', () => ({
 // Mock Gluestack UI to avoid complex dependencies
 jest.mock('@gluestack-ui/themed', () => {
   const mockGluestackComponent = (name) => {
-    const Component = ({ children, ...props }) => {
+    const Component = ({ children }) => {
       return children || null;
     };
     Component.displayName = `Gluestack${name}`;
