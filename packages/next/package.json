@@ -21,10 +21,10 @@
     "setimmediate": "^1.0.5"
   },
   "devDependencies": {
-    "@types/react": "17.0.24",
-    "@types/react-native": "^0.65.2",
+    "@types/react": "^19.0.0",
+    "@types/react-native": "^0.73.0",
     "babel-plugin-react-native-web": "^0.17.1",
     "babel-plugin-transform-define": "^2.0.1",
-    "typescript": "^4.4.3"
+    "typescript": "^5.9.3"
   }
 }

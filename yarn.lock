@@ -3751,11 +3751,12 @@ __metadata:
     "@testing-library/jest-dom": "npm:^5.11.4"
     "@testing-library/react": "npm:^11.1.0"
     "@testing-library/user-event": "npm:^12.1.10"
-    "@types/react": "npm:^17.0.20"
-    "@types/react-dom": "npm:^17.0.9"
+    "@types/react": "npm:^19.0.0"
+    "@types/react-dom": "npm:^19.0.0"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-native: "npm:^0.65.1"
+    react-native-monorepo-tools: "npm:^1.1.0"
     react-native-web: "npm:^0.19.0"
     react-scripts: "npm:4.0.3"
     web-vitals: "npm:^1.0.1"
@@ -3814,8 +3815,8 @@ __metadata:
   dependencies:
     "@my-app/app": "npm:*"
     "@react-native-async-storage/async-storage": "npm:^1.15.8"
-    "@types/react": "npm:17.0.24"
-    "@types/react-native": "npm:^0.65.2"
+    "@types/react": "npm:^19.0.0"
+    "@types/react-native": "npm:^0.73.0"
     babel-plugin-react-native-web: "npm:^0.17.1"
     babel-plugin-transform-define: "npm:^2.0.1"
     next: "npm:^15.0.0"
@@ -3826,7 +3827,7 @@ __metadata:
     react-native: "npm:0.65.1"
     react-native-web: "npm:^0.19.0"
     setimmediate: "npm:^1.0.5"
-    typescript: "npm:^4.4.3"
+    typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -3897,8 +3898,8 @@ __metadata:
     "@testing-library/jest-dom": "npm:^5.11.4"
     "@testing-library/react": "npm:^11.1.0"
     "@testing-library/user-event": "npm:^12.1.10"
-    "@types/react": "npm:^17.0.20"
-    "@types/react-dom": "npm:^17.0.9"
+    "@types/react": "npm:^19.0.0"
+    "@types/react-dom": "npm:^19.0.0"
     autoprefixer: "npm:^10.4.22"
     babel-plugin-react-native-web: "npm:^0.21.2"
     nativewind: "npm:^4.2.1"
@@ -7272,15 +7273,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.9":
-  version: 17.0.26
-  resolution: "@types/react-dom@npm:17.0.26"
-  peerDependencies:
-    "@types/react": ^17.0.0
-  checksum: 10/86be1faf019b58f2b470a037c291c9c9efa5cf8b3927bfec436d83b12dd7a6a0369554c567c4ca8b59e1ee341b835c1b272cd0340628cbbea75ec43168858e5b
-  languageName: node
-  linkType: hard
-
 "@types/react-dom@npm:^19, @types/react-dom@npm:^19.0.0":
   version: 19.2.3
   resolution: "@types/react-dom@npm:19.2.3"
@@ -7297,15 +7289,6 @@ __metadata:
     "@types/react": "npm:*"
     react-native: "npm:*"
   checksum: 10/bc27ccb2737283b78b41dacf605fc99b137091b49cd9b0b1bd2fab8c7950107314a04fc2351b0fcaaaeddea9ec101937fb6df24014f221a275a58666f60cfda0
-  languageName: node
-  linkType: hard
-
-"@types/react-native@npm:^0.65.2":
-  version: 0.65.36
-  resolution: "@types/react-native@npm:0.65.36"
-  dependencies:
-    "@types/react": "npm:^17"
-  checksum: 10/dd0baf47259fe8a78a54c1ea36415f346ab291eeec5c15b5627ca4c4e7bfe53013763f8384ca4743d97e24a3ff9229d83f1b95d0f5e223ee889c252b8f47df2d
   languageName: node
   linkType: hard
 
@@ -7345,18 +7328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:17.0.24":
-  version: 17.0.24
-  resolution: "@types/react@npm:17.0.24"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 10/9e00750cc42e23714fc566e121f33d39f0905a57c9f06d9bf1a7e336e5312095c07c94fa5906c034e000c9ceded920632de495d681543aa5b8b093118a536f1d
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^17, @types/react@npm:^17.0.20":
+"@types/react@npm:^17":
   version: 17.0.89
   resolution: "@types/react@npm:17.0.89"
   dependencies:
@@ -7373,13 +7345,6 @@ __metadata:
   dependencies:
     "@types/node": "npm:*"
   checksum: 10/cfbfea900778e43fa5ce5dbca0d6e82509c0edd3c950e6349080242ba176ef34a4cd380e9391cd31994df04161f563798e068a2a8a9e577d9270950305b3bf9d
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.26.0
-  resolution: "@types/scheduler@npm:0.26.0"
-  checksum: 10/295ede5e7f991c7c52f9ed8e58d3076526be9a560e59ae11bf1c1414f9755a17bd750f3bfed4657b118283d1eb082bb27dcbe2eadf335a982b0c3b6a562771c2
   languageName: node
   linkType: hard
 
@@ -25579,16 +25544,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.4.3":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/458f7220ab11e0fc191514cc41be1707645ec9a8c2d609448a448e18c522cef9646f58728f6811185a4c35613dacdf6c98cf8965c88b3541d0288c47291e4300
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^5.6.3, typescript@npm:^5.9.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
@@ -25596,16 +25551,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/c089d9d3da2729fd4ac517f9b0e0485914c4b3c26f80dc0cffcb5de1719a17951e92425d55db59515c1a7ddab65808466debb864d0d56dcf43f27007d0709594
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^4.4.3#optional!builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/5659316360b5cc2d6f5931b346401fa534107b68b60179cf14970e27978f0936c1d5c46f4b5b8175f8cba0430f522b3ce355b4b724c0ea36ce6c0347fab25afd
   languageName: node
   linkType: hard
 
