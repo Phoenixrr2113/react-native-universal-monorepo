@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storage } from '../lib/storage';
 import type { Todo, TodoStore } from '../types';
 
-const STORAGE_KEY = '@todos';
+const STORAGE_KEY = 'todos';
 
 export const useTodoStore = create<TodoStore>((set, get) => ({
   todos: [],
@@ -21,7 +21,7 @@ export const useTodoStore = create<TodoStore>((set, get) => ({
       todos: [newTodo, ...state.todos],
     }));
 
-    // Save to AsyncStorage
+    // Save to MMKV (synchronous!)
     get().saveTodos();
   },
 
@@ -61,9 +61,10 @@ export const useTodoStore = create<TodoStore>((set, get) => ({
     return get().todos.find((todo) => todo.id === id);
   },
 
-  loadTodos: async () => {
+  // MMKV is synchronous - no more async/await! 🎉
+  loadTodos: () => {
     try {
-      const todosJson = await AsyncStorage.getItem(STORAGE_KEY);
+      const todosJson = storage.getString(STORAGE_KEY);
       if (todosJson) {
         const todos = JSON.parse(todosJson);
         set({ todos });
@@ -73,10 +74,10 @@ export const useTodoStore = create<TodoStore>((set, get) => ({
     }
   },
 
-  saveTodos: async () => {
+  saveTodos: () => {
     try {
       const { todos } = get();
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+      storage.set(STORAGE_KEY, JSON.stringify(todos));
     } catch (error) {
       console.error('Failed to save todos:', error);
     }

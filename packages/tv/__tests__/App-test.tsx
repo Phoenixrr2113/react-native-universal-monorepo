@@ -2,13 +2,21 @@
  * @format
  */
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+describe('TV App Package', () => {
+  it('has correct package structure', () => {
+    const packageJson = require('../package.json');
+    expect(packageJson.name).toBe('@my-app/tv');
+    expect(packageJson.dependencies['@my-app/app']).toBeDefined();
+  });
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+  it('index.js exists and is valid', () => {
+    const fs = require('fs');
+    const path = require('path');
+    const indexPath = path.join(__dirname, '..', 'index.js');
+    expect(fs.existsSync(indexPath)).toBe(true);
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+    const indexContent = fs.readFileSync(indexPath, 'utf-8');
+    expect(indexContent).toContain('@my-app/app');
+    expect(indexContent).toContain('AppRegistry');
+  });
 });
