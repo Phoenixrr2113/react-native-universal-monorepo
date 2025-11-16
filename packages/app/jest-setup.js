@@ -1,4 +1,12 @@
 // Mock React Native completely to avoid Flow syntax issues
+const mockComponent = (name) => {
+  const Component = ({ children }) => {
+    return children || null;
+  };
+  Component.displayName = name;
+  return Component;
+};
+
 jest.mock('react-native', () => ({
   Platform: {
     OS: 'ios',
@@ -18,11 +26,11 @@ jest.mock('react-native', () => ({
       touchableGetPressRectOffset: jest.fn(),
     },
   },
-  View: 'View',
-  Text: 'Text',
-  Image: 'Image',
-  TouchableOpacity: 'TouchableOpacity',
-  Pressable: 'Pressable',
+  View: mockComponent('View'),
+  Text: mockComponent('Text'),
+  Image: mockComponent('Image'),
+  TouchableOpacity: mockComponent('TouchableOpacity'),
+  Pressable: mockComponent('Pressable'),
   ImageSourcePropType: jest.fn(),
 }));
 
@@ -33,18 +41,56 @@ jest.mock('./gluestack-ui.config', () => ({
 
 // Mock Gluestack UI to avoid complex dependencies
 jest.mock('@gluestack-ui/themed', () => {
-  const React = require('react');
+  const mockGluestackComponent = (name) => {
+    const Component = ({ children }) => {
+      return children || null;
+    };
+    Component.displayName = `Gluestack${name}`;
+    return Component;
+  };
+
   return {
     GluestackUIProvider: ({ children }) => children,
-    Box: ({ children, ...props }) => React.createElement('View', props, children),
-    Text: ({ children, ...props }) => React.createElement('Text', props, children),
-    Heading: ({ children, ...props }) => React.createElement('Text', props, children),
-    Badge: ({ children, ...props }) => React.createElement('View', props, children),
-    BadgeText: ({ children, ...props }) => React.createElement('Text', props, children),
-    Image: (props) => React.createElement('Image', props),
-    Center: ({ children, ...props }) => React.createElement('View', props, children),
-    Button: ({ children, ...props }) => React.createElement('TouchableOpacity', props, children),
-    ButtonText: ({ children, ...props }) => React.createElement('Text', props, children),
-    Card: ({ children, ...props }) => React.createElement('View', props, children),
+    Box: mockGluestackComponent('Box'),
+    Text: mockGluestackComponent('Text'),
+    Heading: mockGluestackComponent('Heading'),
+    Badge: mockGluestackComponent('Badge'),
+    BadgeText: mockGluestackComponent('BadgeText'),
+    Image: mockGluestackComponent('Image'),
+    Center: mockGluestackComponent('Center'),
+    Button: mockGluestackComponent('Button'),
+    ButtonText: mockGluestackComponent('ButtonText'),
+    Card: mockGluestackComponent('Card'),
   };
 });
+
+// Mock React Navigation dependencies
+jest.mock('react-native-safe-area-context', () => ({
+  SafeAreaProvider: ({ children }) => children,
+  SafeAreaView: mockComponent('SafeAreaView'),
+  useSafeAreaInsets: () => ({ top: 0, right: 0, bottom: 0, left: 0 }),
+}));
+
+jest.mock('react-native-screens', () => ({
+  enableScreens: jest.fn(),
+}));
+
+// Mock React Navigation
+jest.mock('@react-navigation/native', () => ({
+  NavigationContainer: ({ children }) => children,
+  useNavigation: () => ({
+    navigate: jest.fn(),
+    goBack: jest.fn(),
+    setOptions: jest.fn(),
+  }),
+  useRoute: () => ({
+    params: {},
+  }),
+}));
+
+jest.mock('@react-navigation/native-stack', () => ({
+  createNativeStackNavigator: () => ({
+    Navigator: mockComponent('StackNavigator'),
+    Screen: mockComponent('StackScreen'),
+  }),
+}));

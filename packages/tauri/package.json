@@ -2,31 +2,56 @@
   "name": "@my-app/tauri",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "description": "Desktop application built with Tauri 2.0",
   "author": "John Doe",
   "scripts": {
+    "start": "craco start",
+    "build": "craco build && tauri build",
     "dev": "tauri dev",
-    "build": "tsc && vite build && tauri build",
-    "preview": "vite preview",
+    "preview": "serve -s build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
-    "test": "echo 'No tests yet' && exit 0"
+    "test": "react-scripts test --watchAll=false --passWithNoTests"
   },
   "dependencies": {
     "@my-app/app": "*",
+    "@react-native-async-storage/async-storage": "^1.15.7",
     "@tauri-apps/api": "^2.2.0",
     "@tauri-apps/plugin-shell": "^2.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-native": "^0.78.0",
+    "react-native-web": "^0.21.2",
+    "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@craco/craco": "^6.2.0",
     "@tauri-apps/cli": "^2.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "typescript": "^5.9.3",
-    "vite": "^6.0.7"
+    "autoprefixer": "^10.4.22",
+    "babel-plugin-react-native-web": "^0.21.2",
+    "nativewind": "^4.2.1",
+    "postcss": "^8.5.6",
+    "react-native-monorepo-tools": "^1.1.0",
+    "react-scripts": "4.0.3",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

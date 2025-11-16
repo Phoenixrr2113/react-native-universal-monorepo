@@ -7,7 +7,7 @@ module.exports = {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|@react-native-async-storage|@gluestack-ui|@gluestack-style|@legendapp)/)',
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|@react-native-async-storage|@react-navigation|@gluestack-ui|@gluestack-style|@legendapp)/)',
   ],
   testMatch: [
     '**/__tests__/**/*.test.[jt]s?(x)',
