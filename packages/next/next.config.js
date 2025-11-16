@@ -9,8 +9,15 @@ const withFonts = require('next-fonts');
 module.exports = withImages(withFonts({
   // Allows us to access other directories in the monorepo
   experimental: {
-    externalDir: true
+    externalDir: true,
   },
+  // Transpile specific packages that need it
+  transpilePackages: [
+    'react-native-web',
+    'react-native-safe-area-context',
+    '@react-navigation/native',
+    '@react-navigation/native-stack',
+  ],
   // This feature conflicts with next-images
   images: {
     disableStaticImages: true,
@@ -18,11 +25,13 @@ module.exports = withImages(withFonts({
   webpack: (config, options) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      // Transform all direct `react-native` imports to `react-native-web`
-      'react-native$': 'react-native-web',
-      'react-native-web': path.resolve(__dirname, 'node_modules', 'react-native-web'),
+      // Transform all direct `react-native` imports to `react-native-web` CJS version
+      'react-native$': path.resolve(__dirname, 'node_modules', 'react-native-web', 'dist', 'cjs', 'index.js'),
+      'react-native-web$': path.resolve(__dirname, 'node_modules', 'react-native-web', 'dist', 'cjs', 'index.js'),
       'react': path.resolve(__dirname, 'node_modules', 'react'),
       'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
+      // Use polyfill for use-latest-callback to avoid import.meta issues
+      'use-latest-callback': path.resolve(__dirname, 'polyfills', 'use-latest-callback.js'),
     }
     config.resolve.extensions = [
       '.web.js',
@@ -31,23 +40,14 @@ module.exports = withImages(withFonts({
       ...config.resolve.extensions,
     ]
 
-    // Add support for monorepo packages that use React Native
+    // Add support for transpiling the @my-app/app package
     config.module = config.module || {};
     config.module.rules = config.module.rules || [];
 
-    // Ensure we transpile @my-app packages and React Native modules
+    // Transpile the app package source code (but not its node_modules)
     config.module.rules.push({
       test: /\.(jsx?|tsx?)$/,
-      include: [
-        path.resolve(__dirname, '..', 'app'),
-        // Include node_modules that need transpiling
-        /node_modules\/react-native-/,
-        /node_modules\/@react-native/,
-        /node_modules\/@react-navigation/,
-        /node_modules\/@gluestack-ui/,
-        /node_modules\/@gluestack-style/,
-        /node_modules\/@legendapp/,
-      ],
+      include: [path.resolve(__dirname, '..', 'app', 'src')],
       use: options.defaultLoaders.babel,
     });
 
