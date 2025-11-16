@@ -3726,6 +3726,8 @@ __metadata:
     react: "npm:^19.0.0"
     react-dom: "npm:^19.2.0"
     react-native: "npm:^0.78.0"
+    react-native-mmkv: "npm:^4.0.0"
+    react-native-nitro-modules: "npm:^0.31.6"
     react-native-safe-area-context: "npm:^5.6.2"
     react-native-screens: "npm:^4.18.0"
     react-native-svg: "npm:^15.15.0"
@@ -3756,7 +3758,7 @@ __metadata:
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-native: "npm:^0.65.1"
-    react-native-monorepo-tools: "npm:^1.1.0"
+    react-native-monorepo-tools: "npm:^1.2.1"
     react-native-web: "npm:^0.19.0"
     react-scripts: "npm:4.0.3"
     web-vitals: "npm:^1.0.1"
@@ -3883,7 +3885,9 @@ __metadata:
     pod-install: "npm:^0.2.0"
     react: "npm:^19.0.0"
     react-native: "npm:react-native-tvos@0.78.0-0"
-    react-native-monorepo-tools: "npm:^1.1.0"
+    react-native-mmkv: "npm:^4.0.0"
+    react-native-monorepo-tools: "npm:^1.2.1"
+    react-native-nitro-modules: "npm:^0.31.6"
     react-test-renderer: "npm:^19.0.0"
     typescript: "npm:^5.9.3"
   languageName: unknown
@@ -3908,7 +3912,7 @@ __metadata:
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-native: "npm:^0.78.0"
-    react-native-monorepo-tools: "npm:^1.1.0"
+    react-native-monorepo-tools: "npm:^1.2.1"
     react-native-web: "npm:^0.19.0"
     react-scripts: "npm:4.0.3"
     tailwindcss: "npm:^3.4.0"
@@ -21959,13 +21963,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-monorepo-tools@npm:^1.1.0":
+"react-native-mmkv@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "react-native-mmkv@npm:4.0.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-nitro-modules: "*"
+  checksum: 10/5247b3e19017c4059c997ac79c7e89d33a49c00e2255fb4c5ef8e993fea0ee3aed0b48be9576d154bd098c22099bfd93a70fb071a6c9d865955c97f0aa1a8759
+  languageName: node
+  linkType: hard
+
+"react-native-monorepo-tools@npm:^1.1.0, react-native-monorepo-tools@npm:^1.2.1":
   version: 1.2.1
   resolution: "react-native-monorepo-tools@npm:1.2.1"
   dependencies:
     find-root: "npm:^1.1.0"
     glob: "npm:^7.1.7"
   checksum: 10/356fc34b41c21a4e6db64e539dd604c3d01d8c3548988affe13c9a83893ad162d48d45e3333d553023177e2523e147390820594aaba771d10575d77ccdde544d
+  languageName: node
+  linkType: hard
+
+"react-native-nitro-modules@npm:^0.31.6":
+  version: 0.31.6
+  resolution: "react-native-nitro-modules@npm:0.31.6"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/42b4f9d2aa401587727e6a287b7353e0ef68052c9372effa5cfbf55ebfb7de8d7d5a82970ca663ff9c61cb1e4d350b9044e985e7a96405f512a9a7edaa838ae5
   languageName: node
   linkType: hard
 
