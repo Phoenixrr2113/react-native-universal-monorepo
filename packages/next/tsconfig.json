@@ -7,6 +7,7 @@
   },
   "include": [
     "next-env.d.ts",
+    "react-native-web.d.ts",
     "public",
     "pages"
   ],

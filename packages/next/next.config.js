@@ -20,6 +20,9 @@ module.exports = withImages(withFonts({
       ...(config.resolve.alias || {}),
       // Transform all direct `react-native` imports to `react-native-web`
       'react-native$': 'react-native-web',
+      'react-native-web': path.resolve(__dirname, 'node_modules', 'react-native-web'),
+      'react': path.resolve(__dirname, 'node_modules', 'react'),
+      'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
     }
     config.resolve.extensions = [
       '.web.js',
@@ -28,11 +31,25 @@ module.exports = withImages(withFonts({
       ...config.resolve.extensions,
     ]
 
-    if (options.isServer) {
-      config.externals = ['react', 'react-native-web', ...config.externals];
-    }
-    config.resolve.alias['react'] = path.resolve(__dirname, '.', 'node_modules', 'react');
-    config.resolve.alias['react-native-web'] = path.resolve(__dirname, '.', 'node_modules', 'react-native-web');
+    // Add support for monorepo packages that use React Native
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+
+    // Ensure we transpile @my-app packages and React Native modules
+    config.module.rules.push({
+      test: /\.(jsx?|tsx?)$/,
+      include: [
+        path.resolve(__dirname, '..', 'app'),
+        // Include node_modules that need transpiling
+        /node_modules\/react-native-/,
+        /node_modules\/@react-native/,
+        /node_modules\/@react-navigation/,
+        /node_modules\/@gluestack-ui/,
+        /node_modules\/@gluestack-style/,
+        /node_modules\/@legendapp/,
+      ],
+      use: options.defaultLoaders.babel,
+    });
 
     return config;
   }

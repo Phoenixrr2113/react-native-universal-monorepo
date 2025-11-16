@@ -7,7 +7,7 @@ import Document, {
   NextScript,
   DocumentContext
 } from 'next/document';
-import { AppRegistry } from 'react-native';
+import { AppRegistry } from 'react-native-web';
 
 import appName from '../app.json';
 
@@ -30,7 +30,7 @@ const normalizeNextElements = `
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: DocumentContext) {
     AppRegistry.registerComponent(appName.name, () => Main);
-    const { getStyleElement } = AppRegistry.getApplication(appName.name);
+    const { getStyleElement } = AppRegistry.getApplication(appName.name, {});
     const page = await renderPage();
     const styles = [
       <style key='normalizeNextElements' dangerouslySetInnerHTML={{ __html: normalizeNextElements }} />,
